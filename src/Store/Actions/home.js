@@ -16,3 +16,9 @@ export const quantityupdater = (quantity,name) => {
         name:name
     }
 }
+export const datafetch = (value) => {
+    return {
+        type: actionTypes.DEBOUNCE,
+        value:value
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import classes from './Shipping.module.css'
 import Navbar from'../Navbar/Navbar';
 import Summary from '../Summary/Summary'
@@ -9,9 +9,15 @@ import {
   Link,
   Route
 } from 'react-router-dom';
+import AOS from 'aos'
+
 
 
 const Shipping =(props)=>{
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   let [isFormValid, setFormValid] = useState(false);
 
   let [formData,setFormData]=useState({
@@ -173,7 +179,7 @@ const Shipping =(props)=>{
                <div class="col-12  col-sm-12 col-md-6 col-lg-8 col-xl-8">
                 <h2>Shipping Details</h2>
                 <hr></hr>
-
+                <div data-aos="fade-right">
 <form className={classes.shippingform}>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -220,14 +226,19 @@ const Shipping =(props)=>{
   </div>
 
 </form>
+</div>
+
 <div className={classes.bt}>
                 <button className={classes.cartbutton}type="button" onClick={ontoPayHandler} disabled={!isFormValid} >Next</button>
                 <button className={classes.cartbutton}type="button" onClick={cancelHandler}>Back</button>
                </div>
                </div>
+            
                <div class="col-12  col-sm-12 col-md-6 col-lg-4 col-xl-4 item1">
+               <div data-aos="fade-left">
                 <Summary>
                 </Summary>
+               </div>
                </div>
              </div>
            </div>

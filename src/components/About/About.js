@@ -9,6 +9,7 @@ const about =(props)=>(
         <MainNav></MainNav>
     <div className={classes.mainimg}>
         <img src="./mainimg.jpg"></img>
+        <div data-aos="flip-right">
     <div className={classes.summary}>
         <h1 className={classes.summaryheading}>Best vintage collection</h1>
         <form className={classes.formsearch}>
@@ -16,6 +17,7 @@ const about =(props)=>(
         <input className={classes.input} type="text" placeholder="Search.." name="search"></input>
         <button className={classes.searchbutton}type="button">Submit</button>
         </form>
+    </div>
     </div>
     </div>
     <div className={classes.aboutus}>

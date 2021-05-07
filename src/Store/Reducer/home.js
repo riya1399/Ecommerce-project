@@ -160,6 +160,7 @@ const initialState = {
   ]
   ,
   addTocart: [],
+  debouncedata:[]
 };
 
 const addToCart = (state, action) => {
@@ -207,18 +208,37 @@ const quantityupdater = (state, action) => {
   let b=JSON.parse(a)
   return b
 }
+const datafetch=(state,action) =>{
+  let output = [];
+  console.log(action.value)
+  for (let book in state.products) {
+      // let abc=state.products[book].name.split(" ")
+      // console.log(abc)
+      if (state.products[book].name.toLowerCase().includes(action.value)===true) {
+          output.push( state.products[book]);
+      }
+  }
+  console.log(output);
+  return{
+    ...state,
+    debouncedata:output
+  };
+  
+}
 
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const stat = addToCart(state, action);
-      console.log(stat);
       return stat;
     case actionTypes.QUANTITY_UPDATER:
       const sta = quantityupdater(state, action);
-      console.log(sta);
       return sta;
+      case actionTypes.DEBOUNCE:
+      const st = datafetch(state, action);
+      console.log(st);
+      return st;
     default:
       return state;
   }

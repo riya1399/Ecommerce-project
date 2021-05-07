@@ -11,7 +11,10 @@ const Cartproduct =(props)=>{
         props.quantityupdate(e.target.value,props.name);
     }
    
-   return( <div className={classes.productcontainer}>
+   return(
+       
+<div data-aos="zoom-in">
+ <div className={classes.productcontainer}>
         <div className={classes.flexcontainer}>
         <div className={classes.flex}>
             <div className={classes.imgcon}>
@@ -30,6 +33,7 @@ const Cartproduct =(props)=>{
         </div>
         
         </div>
+    </div>
     </div>
 );
 }

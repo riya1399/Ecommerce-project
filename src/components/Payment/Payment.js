@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import classes from './Payment.module.css'
 import Navbar from '../Navbar/Navbar'
 import Summary from '../Summary/Summary'
@@ -8,9 +8,16 @@ import {
   Route
 } from 'react-router-dom';
 import Orderplaced from '../Orderplaced/Orderplaced';
+import AOS from 'aos'
+import paypalimg from './paypal-logo.png';
+
 
 
 const Payment = (props) => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   let [selection, setselection] = useState(false)
   let [isFormValid, setFormValid] = useState(false);
 
@@ -180,6 +187,7 @@ const Payment = (props) => {
         <div class="row">
           <div class="col-12  col-sm-12 col-md-6 col-lg-8 col-xl-8 item">
             <h1>Payment Options</h1>
+            <div data-aos="fade-right">
             <div className={classes.paymentsection}>
               <div class="custom-control custom-radio mb-4" style={{ backgroundColor: "#d3a578", borderRadius: "5px", color: "#fff", padding: '40px' }}>
                 <input type="radio" name="creditcard" onChange={()=>optionHandler("creditcard")} disabled={checked.creditcardIsDisabled} checked={checked.creditcardIsChecked} onClick={(e) => { inputCheckedHandlerOne(e) }} id="customRadio1" class="custom-control-input"></input>
@@ -205,7 +213,7 @@ const Payment = (props) => {
                 <label class="custom-control-label col-md-8" for="customRadio2"><h6>PayPal</h6>
                   <span className={classes.paypara}>Please use a digital payment method and help us ensure contactless delivery for your safety</span>
                 </label>
-                <span class="logoimg col-md-2 "><img className={classes.paypallogo} src="./paypal-logo.png"></img>
+                <span class="logoimg col-md-2 "><img className={classes.paypallogo} src={paypalimg}></img>
                 </span>
               </div>
 
@@ -216,8 +224,11 @@ const Payment = (props) => {
             <button className={classes.cartbutton} type="button" onClick={cancelledHandler}>Back</button>
           </div>
           </div>
+          </div>
           <div class="col-12  col-sm-12 col-md-6 col-lg-4 col-xl-4 item1">
+          <div data-aos="fade-left">
             <Summary></Summary>
+            </div>
           </div>
         </div>
       </div>

@@ -1,25 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useState,useCallback } from 'react';
 import MainNav from '../../components/MainNav/MainNav';
-import About from '../../components/About/About'
 import Productlisting from '../Productlisting/Productlisting'
 import Footer from '../../components/Footer/Footer'
-import Cart from '../../components/ShoppingCart/ShoppingCart'
-import Shipping from '../../components/Shipping/Shipping'
-import Payment from '../../components/Payment/Payment'
-import Help from '../../components/Help/Help';
 import Search from '../../components/Search/Search';
 import {connect} from 'react-redux';
-import Orderplaced from '../../components/Orderplaced/Orderplaced'
-import Productdescription from '../../components/Productdescription/Productdescription'
+import debounce from 'lodash.debounce';
+import * as action from '../../Store/Actions/home';
+
 
 const Home =(props)=>{
-  useEffect(()=>{
+  console.log(props)
+ 
+  const [inputvalue,setinputvalue]=useState('')
 
-    },[])
+  const onInputChange=(e)=>{
+    console.log(e.target.value)
+    const { value: nextValue } = e.target;
+    setinputvalue(nextValue)
+    debouncedSave(nextValue);
+  }
+  const debouncedSave = useCallback(
+		debounce(nextValue => props.dataFetcher(nextValue), 1500),
+		[],
+	);
+
 return(   <React.Fragment>
     <MainNav></MainNav>
-    <Search></Search>
-    <Productlisting products={props.products}></Productlisting>
+    <Search value={inputvalue} onInputChange={(e)=>{onInputChange(e)}}></Search>
+    <Productlisting products={props.debounce.length!=0?props.debounce:props.products} ></Productlisting>
     <Footer></Footer>
     {/* <Productdescription></Productdescription> */}
   </React.Fragment>
@@ -31,11 +39,15 @@ return(   <React.Fragment>
 const mapStateToProps=state=>{
   return{
       products:state.products,
+      debounce:state.debouncedata
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    dataFetcher:(value)=>{
+      return dispatch(action.datafetch(value))
+    }
   };
 };
 
