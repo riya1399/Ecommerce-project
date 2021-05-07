@@ -1,18 +1,14 @@
 import React from 'react';
 import classes from './Finalorder.module.css'
-import Summarycart from '../Summarycart/Summarycart'
-
 
 const finalorder =(props)=>{  
-    console.log(props.cartdetails)
-    console.log(props.shippingdetails)
     let details=props.cartdetails.map(function(item){
         return(
             <div className={classes.finalcartprod}>
                 <p>{item.name}</p>
                 <p>{item.price}</p>
                 <div className={classes.imgcon}>
-                <img src={item.img}></img>
+                <img src={item.img} alt="product"></img>
                 </div>
             </div>
         )

@@ -8,7 +8,7 @@ const about =(props)=>(
     <React.Fragment>
         <MainNav></MainNav>
     <div className={classes.mainimg}>
-        <img src="./mainimg.jpg"></img>
+        <img src="./mainimg.jpg" alt="books"></img>
         <div data-aos="flip-right">
     <div className={classes.summary}>
         <h1 className={classes.summaryheading}>Best vintage collection</h1>

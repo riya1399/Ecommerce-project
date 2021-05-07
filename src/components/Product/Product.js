@@ -6,7 +6,6 @@ import * as actions from '../../Store/Actions/home';
 const product = (props) => {
 
     const addToCartHandler = (name, price, img) => {
-        // console.log(name,price,img);
         props.onAddToCart(name, price, img);
 
     }
@@ -17,7 +16,7 @@ const product = (props) => {
                 <div className={classes.flexcontainer} onClick={props.loadProduct}>
                     <div className={classes.flex}>
                         <div className={classes.imgcontainer}>
-                            <img src={props.img}></img>
+                            <img src={props.img} alt="product"></img>
                         </div>
                     </div>
                     <div className={classes.flex1}>
@@ -28,15 +27,10 @@ const product = (props) => {
                 <button type="button" className={classes.addtocart} onClick={() => { addToCartHandler(props.name, props.price, props.img) }}>Add to cart</button>
 
             </div>
-            </div>
+        </div>
     );
 }
 
-// const mapStateToProps=state=>{
-//     return{
-//         products:state.products,
-//     }
-//   }
 
 const mapDispatchToProps = dispatch => {
     return {

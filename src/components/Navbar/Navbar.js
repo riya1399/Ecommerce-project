@@ -1,9 +1,5 @@
 import React from 'react';
 import classes from './Navbar.module.css'
-import {
-  Link,
-  Route
-} from 'react-router-dom';
 
 const navbar =(props)=>(
   <React.Fragment>

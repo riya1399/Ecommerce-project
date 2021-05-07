@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './Footer.module.css'
 
 
-const footer =(props)=>(
-    <div className={classes.Footer}>
+const footer = (props) => (
+  <div className={classes.Footer}>
     <footer>
       <ul>
         <li><a className={classes.footerlinks} href="#home">Home</a></li>

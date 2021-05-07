@@ -1,61 +1,49 @@
-import {connect} from 'react-redux';
-import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import React from 'react';
 import classes from './ShoppingCart.module.css'
-import Navbar from '../Navbar/Navbar'
 import Cartproduct from '../Cartproducts/Cartproducts';
 import Summary from '../Summary/Summary'
-import {
-  Link,
-  Route
-} from 'react-router-dom';
 
+const cart = (props) => {
 
-const cart =(props)=>{
-
-  const ontoShippingHandler=() =>{
+  const ontoShippingHandler = () => {
     props.history.push({
-      pathname:"/yourcart/shipping",
-      // state:{
-      //   subtotal:subtotal
-      // }
+      pathname: "/yourcart/shipping",
     })
   }
-  const backHandler=() =>{
+  const backHandler = () => {
     props.history.push({
-      pathname:"/"
+      pathname: "/"
     })
   }
 
-//   let subtotal=0;
-//   if(props.cartproduct.length){
-//   props.cartproduct.forEach(function(item){
-//    subtotal=subtotal+item.price*item.quantity
-//   })
-// }
-  let cart=props.cartproduct.map(function(product){
+  let cart = props.cartproduct.map(function (product) {
     return <Cartproduct name={product.name} price={product.price} img={product.img} quantity={product.quantity}></Cartproduct>
   })
-  return(
-  <React.Fragment>
-           <div className={classes.cartcontainer}>
-             <div class="row">
-               <div class="col-12  col-sm-12 col-md-6 col-lg-8 col-xl-8 item">
-                <h1>Shopping Cart</h1>
-                {cart}
-                <div className={classes.bt}>
-                <button className={classes.cartbutton}type="button" onClick={ontoShippingHandler} disabled={props.cartproduct.length>0?false:true}>Next</button>
-                <button className={classes.cartbutton}type="button" onClick={backHandler}>Cancel</button>
-               </div>
-               </div>
-               <div class="col-12 col-sm-12 col-md-6  col-lg-4 col-xl-4 item1">
-                <Summary displayproduct={false}></Summary>
-               </div>
-             </div>
-           </div>
-           {console.log(props)}
-           </React.Fragment>
-)};
-const mapstatetoprops=(state)=>{
-return {cartproduct:state.addTocart
-}}
+  return (
+    <React.Fragment>
+      <div className={classes.cartcontainer}>
+        <div class="row">
+          <div class="col-12  col-sm-12 col-md-6 col-lg-8 col-xl-8 item">
+            <h1>Shopping Cart</h1>
+            {cart}
+            <div className={classes.bt}>
+              <button className={classes.cartbutton} type="button" onClick={ontoShippingHandler} disabled={props.cartproduct.length > 0 ? false : true}>Next</button>
+              <button className={classes.cartbutton} type="button" onClick={backHandler}>Cancel</button>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6  col-lg-4 col-xl-4 item1">
+            <Summary displayproduct={false}></Summary>
+          </div>
+        </div>
+      </div>
+      {console.log(props)}
+    </React.Fragment>
+  )
+};
+const mapstatetoprops = (state) => {
+  return {
+    cartproduct: state.addTocart
+  }
+}
 export default connect(mapstatetoprops)(cart);

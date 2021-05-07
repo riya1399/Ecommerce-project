@@ -167,23 +167,20 @@ const addToCart = (state, action) => {
   let flag = false;
   for (let index = 0; index < state.addTocart.length; index++) {
     let ab = state.addTocart[index];
-    console.log(ab)
     if (ab.name === action.product.name) {
       ab.quantity = ab.quantity + 1;
       flag = true;
       break
     }
   }
-  console.log(flag)
+ 
   if (!flag) {
     const newProduct = {
       ...action.product
     }
-    console.log(newProduct);
     return {
       ...state,
       addTocart: state.addTocart.concat(newProduct),
-
     }
   }
   else {
@@ -194,13 +191,11 @@ const addToCart = (state, action) => {
 }
 
 const quantityupdater = (state, action) => {
-  let flag = false;
   for (let index = 0; index < state.addTocart.length; index++) {
     let ab = state.addTocart[index];
-    console.log(ab)
+ 
     if (ab.name === action.name) {
       ab.quantity = action.quantity;
-      flag = true;
       break
     }
   }
@@ -210,15 +205,11 @@ const quantityupdater = (state, action) => {
 }
 const datafetch=(state,action) =>{
   let output = [];
-  console.log(action.value)
   for (let book in state.products) {
-      // let abc=state.products[book].name.split(" ")
-      // console.log(abc)
       if (state.products[book].name.toLowerCase().includes(action.value)===true) {
           output.push( state.products[book]);
       }
   }
-  console.log(output);
   return{
     ...state,
     debouncedata:output
@@ -237,7 +228,6 @@ const reducer = (state = initialState, action) => {
       return sta;
       case actionTypes.DEBOUNCE:
       const st = datafetch(state, action);
-      console.log(st);
       return st;
     default:
       return state;

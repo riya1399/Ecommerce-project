@@ -12,12 +12,6 @@ color:var(--dark)!important;
     display: flex;
     width: 100%;
 }
-/* .flex{
-    width:50%;
-    height:100%;
-    object-fit: cover;
-
-} */
 .imgcontainer{
     width:150px;
     height:200px;
@@ -76,7 +70,7 @@ img{
         opacity: 1;
         z-index: 1;
         display: flex;
-    align-items: center;
+        align-items: center;
         font-size: 14px;
         transform: none;
         transition:none; 
@@ -97,7 +91,7 @@ img{
         opacity: 1;
         z-index: 1;
         display: flex;
-    align-items: center;
+        align-items: center;
         font-size: 12px;
         transform: none;
         transition:none; 
