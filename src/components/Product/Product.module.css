@@ -1,31 +1,110 @@
 .productcontainer{
-    background-color: black ;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 1px 12px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    position: relative;
 padding:20px;
 margin: 20px 20px;
-color:#fff!important;
+color:var(--dark)!important;
 
 }
 .flexcontainer{
     display: flex;
     width: 100%;
 }
-.flex{
+/* .flex{
     width:50%;
     height:100%;
     object-fit: cover;
 
-}
-/* .img-container{
-    width:100%;
-    height:100%;
-    
 } */
+.imgcontainer{
+    width:150px;
+    height:200px;
+    object-fit: contain;
+}
 img{
     width:100%;
     height:100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 .flex1{
     width:50%;
     padding:10px;
+    font-weight:900;
+    
 }
+.addtocart {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #4d1601;
+    color: white;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    opacity: -1;
+    z-index: -1;
+    transform: translateY(10px);
+    transition:all .48s ease-in-out; 
+  }
+  
+  .addtocart:hover,
+  .addtocart:active {
+    background-color: #2c0d00;
+  }
+
+.productcontainer:hover .addtocart{
+    opacity: 1;
+    z-index: 1;
+    transform:translateY(-50px);
+
+}
+@media screen and (max-width:768px) {
+    .addtocart {
+        padding: 0.5rem 1rem!important;
+        position: absolute;
+        bottom: 20px;
+        left:60%;
+        text-align: center;
+        opacity: 1;
+        z-index: 1;
+        display: flex;
+    align-items: center;
+        font-size: 14px;
+        transform: none;
+        transition:none; 
+      }
+      .productcontainer:hover .addtocart{
+
+        transform:none;
+    
+    }
+}
+@media screen and (max-width:425px) {
+    .addtocart {
+        padding: 0.5rem 1rem!important;
+        position: absolute;
+        bottom: 20px;
+        left:60%;
+        text-align: center;
+        opacity: 1;
+        z-index: 1;
+        display: flex;
+    align-items: center;
+        font-size: 12px;
+        transform: none;
+        transition:none; 
+      }
+      .productcontainer:hover .addtocart{
+        transform:none;
+    
+    }
+}
+  

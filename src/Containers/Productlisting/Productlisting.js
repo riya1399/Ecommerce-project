@@ -4,11 +4,22 @@ import Product from '../../components/Product/Product'
 import Sampledata from '../../sampledata/sampledata.json'
 import MainNav from '../../components/MainNav/MainNav';
 import Footer from '../../components/Footer/Footer'
+import { withRouter } from 'react-router';
 
 const productlisting =(props)=>{
-    let allproducts=Sampledata.products.map(function(item){ 
+    const loadProductHandler=(product)=>{
+        props.history.push({
+            pathname:'/productdesc',
+            state:{
+                product:product
+            }
+        })
+    }
+    
+    let allproducts=props.products.map(function(item){ 
         return(
-            <Product name={item.name} price={item.price} img={item.img}></Product>
+            <Product name={item.name} price={item.price} img={item.img} loadProduct={()=>{loadProductHandler(item)}}></Product>
+
         );
     });
     return(
@@ -19,7 +30,6 @@ const productlisting =(props)=>{
             <p>Trusted by over 1,700,000 businesses worldwide</p>
             <div className={classes.container}>
             {allproducts}
-            {console.log(Sampledata.products)}
             </div>
         </div>
     </div>
@@ -27,4 +37,4 @@ const productlisting =(props)=>{
     );
     };
 
-export default productlisting;
+export default withRouter(productlisting);

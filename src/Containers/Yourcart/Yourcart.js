@@ -13,16 +13,19 @@ import {
   Switch
 } from 'react-router-dom';
 import payment from '../../components/Payment/Payment';
+import Orderplaced from '../../components/Orderplaced/Orderplaced'
+import Home from '../Home/Home'
 
 
 const yourcart =(props)=>(
   <React.Fragment>
-      <MainNav></MainNav>
+      <MainNav disable={true}></MainNav>
       <Navbar></Navbar>
       <Switch>
+      <Route  path="/yourcart/payment/orderplaced" component={Orderplaced}></Route>
       <Route path="/yourcart/shipping" component={Shipping}></Route>
-        <Route path="/yourcart/payment" component={Payment}></Route>
-        <Route path="/yourcart/" component={Cart}></Route>
+        <Route  path="/yourcart/payment" component={Payment}></Route>
+        <Route  path="/yourcart/" component={Cart}></Route>
         </Switch>
         <Footer></Footer>
   </React.Fragment>

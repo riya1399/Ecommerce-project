@@ -5,22 +5,28 @@
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    background-color: var(--pink);
 
   }
+  .cartli{
+    padding:10px 20px;
+    border-bottom: 2px solid #4d1601;
+  }
+
 
   a{
     padding:0 20px;
     text-decoration: none!important;
     color:var(--white)!important;
   }
-.underline{
-    border-bottom: 2px solid #fff;
-    padding-bottom: 10px;
-    margin-bottom:20px;
-    color:var(--white)!important;
-    
+  @media screen and (max-width:768px) {
+    .cartlinks{
+      font-size: 14px;
+  
+    }
   }
-  .underline:hover{
-    border-bottom: 2px solid #424242;
+  @media screen and (max-width:425px) {
+    .cartlinks{
+      font-size: 10px;
+  
+    }
   }

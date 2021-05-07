@@ -4,11 +4,17 @@ import MainNav from '../MainNav/MainNav';
 import Footer from '../Footer/Footer';
 import {
   Link,
-  Route
+  Route,
+  withRouter
 } from 'react-router-dom';
 
 
-const help =(props)=>(
+const help =(props)=>{
+  const helpHandler=()=>{
+    props.history.push("/")
+  }
+
+  return(
   <React.Fragment>
     <MainNav></MainNav>
     <div className={classes.contactus}>
@@ -34,7 +40,7 @@ const help =(props)=>(
     <label for="exampleFormControlTextarea1">Additional Details</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
-  <button className={classes.contactbutton} type="submit">Submit</button>
+  <button className={classes.contactbutton} type="submit" onClick={helpHandler}>Submit</button>
   <div class='edit_hover_class'>
    <a className={classes.ic} href='#'><i class="fas fa-cart-plus"></i></a>
 </div>
@@ -42,6 +48,6 @@ const help =(props)=>(
 </form>
 <Footer></Footer>
            </React.Fragment>
-);
+)};
 
-export default help;
+export default withRouter(help);

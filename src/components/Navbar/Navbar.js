@@ -9,9 +9,9 @@ const navbar =(props)=>(
   <React.Fragment>
           <nav>
             <ul className={classes.cartlinks}>
-            <li><Link className={classes.underline} to='/yourcart/'>1. Shopping Cart</Link></li>
-            <li><Link className={classes.underline} to='/yourcart/shipping'>2. Shipping Details</Link></li>
-            <li><Link className={classes.underline} to='/yourcart/payment'>3. Payment Options</Link></li>
+            <li className={classes.cartli} >1. Shopping Cart</li>
+            <li className={classes.cartli}>2. Shipping Details</li>
+            <li className={classes.cartli}>3. Payment Options</li>
             </ul>
           </nav>
            </React.Fragment>

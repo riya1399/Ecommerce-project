@@ -1,3 +1,12 @@
+.paymentsection{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 1px 12px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    position: relative;
+padding:20px;
+margin: 20px 0px;
+color:var(--dark)!important;
+}
 .paypallogo{
     width:20%;
 }
@@ -8,7 +17,8 @@
     width: 30%;
     padding: 5px;
     margin-right:10px;
-    background:var(--pink);
+    text-align: center;
+    background:#d3a578 ;
     color: white;
     font-size: 17px;
     border:none;
@@ -17,3 +27,37 @@
   .cartcontainer{
     margin:40px;
 }
+@media screen and (max-width:768px) {
+    .cartbutton{
+      font-size: 12px;
+  }
+  .bt{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .cartcontainer{
+  text-align: center;
+  }
+  .cartcontainer h1{
+    font-size:24px;
+    font-weight: bold;
+    }
+  }
+  @media screen and (max-width:425px) {
+  
+    .cartbutton{
+        font-size: 12px;
+    }
+    .bt{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .cartcontainer{
+      text-align: center;
+      }
+      .cartcontainer h1{
+        font-size:16px;
+        font-weight: bold;
+        }
+  }
+  

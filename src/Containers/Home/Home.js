@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainNav from '../../components/MainNav/MainNav';
 import About from '../../components/About/About'
 import Productlisting from '../Productlisting/Productlisting'
@@ -8,18 +8,36 @@ import Shipping from '../../components/Shipping/Shipping'
 import Payment from '../../components/Payment/Payment'
 import Help from '../../components/Help/Help';
 import Search from '../../components/Search/Search';
+import {connect} from 'react-redux';
+import Orderplaced from '../../components/Orderplaced/Orderplaced'
+import Productdescription from '../../components/Productdescription/Productdescription'
 
+const Home =(props)=>{
+  useEffect(()=>{
 
-
-const home =(props)=>(
-    <React.Fragment>
+    },[])
+return(   <React.Fragment>
     <MainNav></MainNav>
     <Search></Search>
-    <Productlisting></Productlisting>
+    <Productlisting products={props.products}></Productlisting>
     <Footer></Footer>
+    {/* <Productdescription></Productdescription> */}
   </React.Fragment>
-);
+  );
 
-export default home;
+}
 
 
+const mapStateToProps=state=>{
+  return{
+      products:state.products,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

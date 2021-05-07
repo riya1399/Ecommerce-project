@@ -1,0 +1,24 @@
+.reviewitem{
+    background-color:#d3a578 ;
+    box-shadow: 0 1px 12px 8px rgba(211, 165, 120, 0.2);
+    border-radius: 14px;
+    position: relative;
+padding:20px;
+margin: 20px 0px;
+width:80%;
+margin:auto;
+margin-top:20px;
+margin-bottom: 20px;
+}
+@media screen and (max-width:768px) {
+    .reviewitem{
+        margin:auto;
+        margin-bottom:20px;
+    }
+}
+@media screen and (max-width:425px) {
+    .reviewitem{
+        margin:auto;
+        margin-bottom:20px;
+    }
+}

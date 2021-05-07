@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -6,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import {createStore,applyMiddleware,compose,combineReducers} from 'redux';
-import rootReducer from '';
+import Reducer from './Store/Reducer/home';
 // import authReducer from './store/reducer/auth';
 // import burgerBuilderReducer from './store/reducer/burgerBuilder';
 // import thunk from 'redux-thunk';
@@ -19,7 +20,7 @@ import rootReducer from '';
 //   auth:authReducer
 // });
 
-const store=createStore(rootReducer);
+const store=createStore(Reducer);
 
 ReactDOM.render(
   <React.StrictMode>

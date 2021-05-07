@@ -1,8 +1,15 @@
 footer{
-  background-color: var(--pink)!important;
+  background-color: #4d1601;
   height:50px;
+  position: relative;
+  left: 0;
+  width: 100%;
+  bottom: -30px;
+  text-align: center;
+  color: white;
   
 }
+
 ul{
     display: flex;
     list-style: none;

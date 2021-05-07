@@ -1,0 +1,13 @@
+.summaryitem{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 1px 12px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    position: relative;
+padding:20px ;
+margin: 20px 0px;
+color:var(--dark)!important;
+
+}
+.summaryheading{
+    text-align: center;
+}

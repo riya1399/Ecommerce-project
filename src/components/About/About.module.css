@@ -54,15 +54,15 @@ input {
     width: 40%;
     padding: 10px;
     margin-left:10px;
-    background: var(--lightpink);
-    color: var(--pink);
+    background-color:#d3a578 !important;
+    color: #fff!important;
     font-size: 17px;
     border:none;
     cursor: pointer;
   }
   
    .searchbutton:hover {
-    background: #f4c2c2;
+    background: #d38e78;
   }
 
   form.form::after {
@@ -93,3 +93,38 @@ input {
     
     
   }
+ 
+  .aboutus{
+    text-align: center;
+    height:100%;
+  }
+  @media screen and (max-width:768px) {
+    .mainimg {
+      max-width: 100%;
+    }
+    
+    .mainimg img {
+      width: 100%;
+      transform: none;
+    }
+}
+@media screen and (max-width:425px) {
+  .mainimg {
+    max-width: 100%;
+    transform:none;
+  }
+  .summary {
+    max-width: 45rem;
+    width: 80%;
+    margin: auto;
+    margin-top: -12rem;
+    position: relative;
+  }
+  
+  .mainimg img {
+    width: 150%;
+    transform: none;
+
+  }
+}
+  

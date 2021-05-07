@@ -9,6 +9,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51ejXdSceNL._AA300_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "business"
       },
       {
@@ -20,6 +21,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51ZouHoBGtL._SX315_BO1,204,203,200_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "business"
       },
       {
@@ -31,6 +33,7 @@
         "type": "paperback",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51Myx6jMujL._AA300_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "business"
       },
       {
@@ -42,6 +45,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51UyMOpP%2BGL._AA300_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "business"
       },
       {
@@ -53,6 +57,7 @@
         "type": "paperback",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51PWIy1rHUL._AA300_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "business"
       },
       {
@@ -64,6 +69,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/61WFjEDBktL._SX437_BO1,204,203,200_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "cookbooks"
       },
       {
@@ -75,6 +81,7 @@
         "type": "harcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/419aGgQt-5L._SX392_BO1,204,203,200_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "cookbooks"
       },
       {
@@ -86,6 +93,7 @@
         "type": "kindle",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51UbplnqSgL._SX331_BO1,204,203,200_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "mystery"
       },
       {
@@ -97,6 +105,7 @@
         "type": "paperback",
         "img": "https://images-na.ssl-images-amazon.com/images/I/514jRDA21TL._AA300_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "mystery"
       },
       {
@@ -108,6 +117,7 @@
         "type": "paperback",
         "img": "https://images-na.ssl-images-amazon.com/images/I/41RTt7alEqL._SX332_BO1,204,203,200_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "mystery"
       },
       {
@@ -119,6 +129,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51qlgJ6ZojL.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "scifi"
       },
       {
@@ -130,6 +141,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51n5SAiAz7L._AA300_.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "accessories"
       },
       {
@@ -141,6 +153,7 @@
         "type": "hardcover",
         "img": "https://images-na.ssl-images-amazon.com/images/I/51d4G0sFMzL.jpg",
         "inCart": false,
+        "review":[{"name":"tomtoj","date":"2,August,2020","star":3,"desc":"Good Book"},{"name":"John","date":"13,September,2020","star":3,"desc":"Good Book"},{"name":"Lily","date":"24,september,2020","star":3,"desc":"Good Book"}],
         "category": "scifi"
       }
     ]
