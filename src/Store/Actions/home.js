@@ -11,6 +11,12 @@ export const addToCart = (name, price,img) => {
         img:img}
     }
 }
+export const deleteproduct = (name) => {
+    return {
+        type: actionTypes.DELETEPRODUCT,
+        name:name
+    }
+}
 export const quantityupdater = (quantity,name) => {
     return {
         type: actionTypes.QUANTITY_UPDATER,

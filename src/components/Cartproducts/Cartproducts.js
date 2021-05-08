@@ -10,6 +10,9 @@ const Cartproduct = (props) => {
         setquantity(e.target.value);
         props.quantityupdate(e.target.value, props.name);
     }
+    const deleteProductHandler=(name)=>{
+        props.deleteProduct(name)
+    }
 
     return (
 
@@ -30,6 +33,9 @@ const Cartproduct = (props) => {
                         <form>
                             <input className={classes.increasedinput} type="number" id="points" name="points" value={quantity} onChange={(e) => quantityChangeHandler(e)} min="1" step="1" ></input>
                         </form>
+                        <div onClick={()=>deleteProductHandler(props.name)}>
+                  <i class="fas fa-times"></i>
+                  </div>
                     </div>
 
                 </div>
@@ -39,7 +45,8 @@ const Cartproduct = (props) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        quantityupdate: (quantity, name) => dispatch(actions.quantityupdater(quantity, name))
+        quantityupdate: (quantity, name) => dispatch(actions.quantityupdater(quantity, name)),
+        deleteProduct:(name)=>dispatch(actions.deleteproduct(name))
     }
 }
 

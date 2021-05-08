@@ -33,6 +33,16 @@ const addToCart = (state, action) => {
     }
   }
 }
+const deletecartproduct =(state,action)=>{
+  console.log(action)
+  let newarr=state.addTocart.filter(function(item){
+    return item.name!=action.name
+  })
+  return{
+    ...state,
+    addTocart:newarr
+  }
+}
 
 const quantityupdater = (state, action) => {
   for (let index = 0; index < state.addTocart.length; index++) {
@@ -68,6 +78,8 @@ const reducer = (state = initialState, action) => {
       const stat = addToCart(state, action);
       // localStorage.setItem('mycart',JSON.stringify(stat.addTocart))
       return stat;
+    case actionTypes.DELETEPRODUCT:
+      return deletecartproduct(state,action)
     case actionTypes.QUANTITY_UPDATER:
       const sta = quantityupdater(state, action);
       // localStorage.setItem('mycart',JSON.stringify(sta.addTocart))
