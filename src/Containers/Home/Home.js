@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import MainNav from '../../components/MainNav/MainNav';
 import Productlisting from '../Productlisting/Productlisting'
 import Footer from '../../components/Footer/Footer'
@@ -10,6 +10,9 @@ import * as action from '../../Store/Actions/home';
 
 const Home = (props) => {
   const [inputvalue, setinputvalue] = useState('')
+  useEffect(()=>{
+    props.fetchproduct()
+  },[])
 
   const onInputChange = (e) => {
     const { value: nextValue } = e.target;
@@ -20,11 +23,11 @@ const Home = (props) => {
     debounce(nextValue => props.dataFetcher(nextValue), 1500),
     [],
   );
-
+  let productlisting=props.loading===true?null:  <Productlisting products={props.debounce.length !== 0 ? props.debounce : props.products} ></Productlisting>
   return (<React.Fragment>
     <MainNav></MainNav>
     <Search value={inputvalue} onInputChange={(e) => { onInputChange(e) }}></Search>
-    <Productlisting products={props.debounce.length !== 0 ? props.debounce : props.products} ></Productlisting>
+    {productlisting}
     <Footer></Footer>
   </React.Fragment>
   );
@@ -35,7 +38,8 @@ const Home = (props) => {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    debounce: state.debouncedata
+    debounce: state.debouncedata,
+    loading:state.loading
   }
 }
 
@@ -43,6 +47,9 @@ const mapDispatchToProps = dispatch => {
   return {
     dataFetcher: (value) => {
       return dispatch(action.datafetch(value))
+    },
+    fetchproduct:()=>{
+      return dispatch(action.fetchproducts())
     }
   };
 };

@@ -1,9 +1,14 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 import classes from './Product.module.css'
 import * as actions from '../../Store/Actions/home';
+import AOS from 'aos'
 
-const product = (props) => {
+const Product = (props) => {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, []);
 
     const addToCartHandler = (name, price, img) => {
         props.onAddToCart(name, price, img);
@@ -27,7 +32,7 @@ const product = (props) => {
                 <button type="button" className={classes.addtocart} onClick={() => { addToCartHandler(props.name, props.price, props.img) }}>Add to cart</button>
 
             </div>
-        </div>
+         </div>
     );
 }
 
@@ -40,4 +45,4 @@ const mapDispatchToProps = dispatch => {
 
 
 
-export default connect(null, mapDispatchToProps)(product);
+export default connect(null, mapDispatchToProps)(Product);

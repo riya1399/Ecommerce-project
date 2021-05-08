@@ -10,7 +10,7 @@ import {createStore,applyMiddleware,compose,combineReducers} from 'redux';
 import Reducer from './Store/Reducer/home';
 // import authReducer from './store/reducer/auth';
 // import burgerBuilderReducer from './store/reducer/burgerBuilder';
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 // import orderReducer from './store/reducer/order';
 
 
@@ -20,7 +20,7 @@ import Reducer from './Store/Reducer/home';
 //   auth:authReducer
 // });
 
-const store=createStore(Reducer);
+const store=createStore(Reducer,applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>

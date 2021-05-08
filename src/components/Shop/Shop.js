@@ -1,10 +1,19 @@
-import React from 'react';
+import React ,{useEffect, useState} from 'react';
 import classes from './Shop.module.css'
 import Product from '../../components/Product/Product'
 import MainNav from '../../components/MainNav/MainNav';
 import Footer from '../../components/Footer/Footer'
 import { connect } from 'react-redux';
-const productlisting = (props) => {
+import * as action from '../../Store/Actions/home';
+
+const Shop = (props) => {
+    const [data,setdata]=useState([])
+    useEffect(()=>{
+        setdata(props.shop)
+    })
+    useEffect(()=>{
+        props.shopproduct()
+      },[])
     const loadProductHandler = (product) => {
         props.history.push({
             pathname: '/productdesc',
@@ -13,8 +22,8 @@ const productlisting = (props) => {
             }
         })
     }
-
-    let allproducts = props.products.map(function (item) {
+    console.log(props)
+    let allproducts = props.loading===true?null:data.map(function (item) {
         return (
             <Product name={item.name} price={item.price} img={item.img} loadProduct={() => { loadProductHandler(item) }}></Product>
         );
@@ -38,7 +47,16 @@ const productlisting = (props) => {
 
 const mapStateToProps = state => {
     return {
-        products: state.products,
+        shop: state.shop,
+        loading:state.loading
     }
 }
-export default connect(mapStateToProps)(productlisting);
+const mapDispatchToProps = dispatch => {
+    return {
+      shopproduct:()=>{
+        return dispatch(action.shopproduct())
+      }
+    };
+  };
+  
+export default connect(mapStateToProps,mapDispatchToProps)(Shop);

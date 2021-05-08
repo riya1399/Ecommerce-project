@@ -1,10 +1,22 @@
 import { connect } from 'react-redux';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './ShoppingCart.module.css'
 import Cartproduct from '../Cartproducts/Cartproducts';
 import Summary from '../Summary/Summary'
+import AOS from 'aos'
 
-const cart = (props) => {
+const Cart = (props) => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
+  // const [mycartproducts,setmycartproducts]=useState(JSON.parse(localStorage.getItem('mycart'))|| [])
+  // useEffect(()=>{
+  //   console.log(localStorage.getItem('mycart'))
+  //   setmycartproducts(JSON.parse(localStorage.getItem('mycart')))
+  //   // localStorage.setItem('mycart',mycartproducts)
+  // },[])
 
   const ontoShippingHandler = () => {
     props.history.push({
@@ -16,7 +28,7 @@ const cart = (props) => {
       pathname: "/"
     })
   }
-
+  // console.log(mycartproducts)
   let cart = props.cartproduct.map(function (product) {
     return <Cartproduct name={product.name} price={product.price} img={product.img} quantity={product.quantity}></Cartproduct>
   })
@@ -46,4 +58,4 @@ const mapstatetoprops = (state) => {
     cartproduct: state.addTocart
   }
 }
-export default connect(mapstatetoprops)(cart);
+export default connect(mapstatetoprops)(Cart);
