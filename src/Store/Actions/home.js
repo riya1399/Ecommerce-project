@@ -1,4 +1,3 @@
-import { getByDisplayValue } from '@testing-library/dom';
 import * as actionTypes from './actionTypes';
 import axios from 'axios'
 
@@ -34,13 +33,11 @@ export const fetchproducts = () => {
     return dispatch=>{
         dispatch(fetchstart())
         axios.get('https://6092506885ff51001721260d.mockapi.io/ecommerce').then(response=>{
-            console.log(response.data)
             dispatch(fetchsuccess(response.data))
         })
     }
 }
 export const fetchstart = () => {
-    console.log("fetchstart")
     return {
         type: actionTypes.FETCHSTART,
     }
@@ -71,5 +68,15 @@ export const shopproduct = () => {
             console.log(response.data)
             dispatch(shopproductsuccess(response.data))
         })
+    }
+}
+export const applycoupon=()=>{
+    return{
+        type:actionTypes.APPLYCOUPON
+    }
+}
+export const emptycart=()=>{
+    return{
+        type:actionTypes.EMPTYCART
     }
 }

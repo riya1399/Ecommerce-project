@@ -11,3 +11,13 @@ color:var(--dark)!important;
 .summaryheading{
     text-align: center;
 }
+.btapply{
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #d3a578;
+    color: white;
+    padding: 0.95rem 1rem;
+    font-weight: bold;
+    font-size: 12px;
+}

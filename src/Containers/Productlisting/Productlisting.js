@@ -15,7 +15,7 @@ const productlisting = (props) => {
 
     let allproducts = props.products.map(function (item) {
         return (
-            <Product name={item.name} price={item.price} img={item.img} loadProduct={() => { loadProductHandler(item) }}></Product>
+            <Product key={item.name} name={item.name} price={item.price} img={item.img} loadProduct={() => { loadProductHandler(item) }}></Product>
 
         );
     });

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classes from './ShoppingCart.module.css'
 import Cartproduct from '../Cartproducts/Cartproducts';
 import Summary from '../Summary/Summary'
@@ -11,12 +11,6 @@ const Cart = (props) => {
     AOS.refresh();
   }, []);
 
-  // const [mycartproducts,setmycartproducts]=useState(JSON.parse(localStorage.getItem('mycart'))|| [])
-  // useEffect(()=>{
-  //   console.log(localStorage.getItem('mycart'))
-  //   setmycartproducts(JSON.parse(localStorage.getItem('mycart')))
-  //   // localStorage.setItem('mycart',mycartproducts)
-  // },[])
 
   const ontoShippingHandler = () => {
     props.history.push({
@@ -28,9 +22,9 @@ const Cart = (props) => {
       pathname: "/"
     })
   }
-  // console.log(mycartproducts)
+
   let cart = props.cartproduct.map(function (product) {
-    return <Cartproduct name={product.name} price={product.price} img={product.img} quantity={product.quantity}></Cartproduct>
+    return <Cartproduct key={product.name} name={product.name} price={product.price} img={product.img} quantity={product.quantity}></Cartproduct>
   })
   return (
     <React.Fragment>
@@ -45,11 +39,10 @@ const Cart = (props) => {
             </div>
           </div>
           <div class="col-12 col-sm-12 col-md-6  col-lg-4 col-xl-4 item1">
-            <Summary displayproduct={false}></Summary>
+            <Summary displayproduct={false} applybuttonDisable={true}></Summary>
           </div>
         </div>
       </div>
-      {console.log(props)}
     </React.Fragment>
   )
 };

@@ -4,7 +4,7 @@ import classes from './Finalorder.module.css'
 const finalorder =(props)=>{  
     let details=props.cartdetails.map(function(item){
         return(
-            <div className={classes.finalcartprod}>
+            <div key={item.name} className={classes.finalcartprod}>
                 <p>{item.name}</p>
                 <p>{item.price}</p>
                 <div className={classes.imgcon}>

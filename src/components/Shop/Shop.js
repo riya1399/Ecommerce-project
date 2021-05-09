@@ -22,10 +22,9 @@ const Shop = (props) => {
             }
         })
     }
-    console.log(props)
     let allproducts = props.loading===true?null:data.map(function (item) {
         return (
-            <Product name={item.name} price={item.price} img={item.img} loadProduct={() => { loadProductHandler(item) }}></Product>
+            <Product key={item.name} name={item.name} price={item.price} img={item.img} loadProduct={() => { loadProductHandler(item) }}></Product>
         );
     });
     return (

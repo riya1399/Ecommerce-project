@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import {connect} from 'react-redux'
 import classes from './Orderplaced.module.css'
 import Finalorder from '../Finalorder/Finalorder'
+import * as action from '../../Store/Actions/home'
 import {
   Redirect
 } from 'react-router-dom';
@@ -15,6 +17,7 @@ const Orderplaced = (props) => {
 
   const [value, setvalue] = useState(false)
   const redirectHandler = () => {
+    props.emptycart()
     setvalue(true);
   }
   let redirect = value === true ? <Redirect to="/"></Redirect> : null;
@@ -34,4 +37,10 @@ const Orderplaced = (props) => {
   )
 };
 
-export default Orderplaced;
+const mapDispatchToProps=dispatch=>{
+  return{
+    emptycart:()=>dispatch(action.emptycart())
+  }
+}
+
+export default connect(null,mapDispatchToProps)(Orderplaced);

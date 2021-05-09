@@ -10,7 +10,8 @@ const Payment = (props) => {
     AOS.init();
     AOS.refresh();
   }, []);
-  let [selection, setselection] = useState(false)
+  let [payoption, setpayoption] = useState(' ')
+
   let [isFormValid, setFormValid] = useState(false);
 
   let [formData, setFormData] = useState({
@@ -82,12 +83,6 @@ const Payment = (props) => {
 
   }
 
-  const [checked, setchecked] = useState({
-    creditcardIsChecked: true,
-    paypalIsChecked: false,
-    creditcardIsDisabled: false,
-    paypalIsDisabled: true
-  });
 
   const cancelledHandler = () => {
     props.history.push({
@@ -95,68 +90,22 @@ const Payment = (props) => {
     })
   }
 
-  const inputCheckedHandlerOne = (e) => {
-    if (e.target.checked === true) {
-      setchecked((state) => {
-        return {
-          creditcardIsChecked: false,
-          creditcardIsDisabled: false,
-          paypalIsChecked: false,
-          paypalIsDisabled: false
-        }
-      })
-    } else {
-      setchecked((state) => {
-        return {
-          creditcardIsChecked: true,
-          creditcardIsDisabled: false,
-          paypalIsChecked: false,
-          paypalIsDisabled: true
-        }
-      })
-    }
-  }
-
-
-  const inputCheckedHandlerTwo = (e) => {
-    if (e.target.checked === true) {
-      setchecked((state) => {
-        return {
-          creditcardIsChecked: false,
-          creditcardIsDisabled: true,
-          paypalIsChecked: true,
-          paypalIsDisabled: false
-        }
-      })
-    } else {
-      setchecked((state) => {
-        return {
-          creditcardIsChecked: false,
-          creditcardIsDisabled: false,
-          paypalIsChecked: false,
-          paypalIsDisabled: false
-        }
-      })
-    }
-  }
   const paynowHandler = () => {
     props.history.push({
       pathname: '/yourcart/payment/orderplaced',
       state: {
         cartproduct: props.history.location.state.cartproduct,
         shippingdetails: props.history.location.state.shippingdetails,
-        paymentoption: "creditcard"
+        paymentoption: payoption
       }
     })
   }
   const optionHandler = (name) => {
     if (name === "paypal") {
-      setselection(true)
-      setFormValid(true)
+      setFormValid(() => { return true })
     }
-    else {
-      setselection(true)
-    }
+  
+    setpayoption(name)
   }
   return (
     <React.Fragment>
@@ -167,7 +116,7 @@ const Payment = (props) => {
             <div data-aos="fade-right">
               <div className={classes.paymentsection}>
                 <div class="custom-control custom-radio mb-4" style={{ backgroundColor: "#d3a578", borderRadius: "5px", color: "#fff", padding: '40px' }}>
-                  <input type="radio" name="creditcard" onChange={() => optionHandler("creditcard")} disabled={checked.creditcardIsDisabled} checked={checked.creditcardIsChecked} onClick={(e) => { inputCheckedHandlerOne(e) }} id="customRadio1" class="custom-control-input"></input>
+                  <input type="radio" name="creditcard" onClick={() => optionHandler("creditcard")} checked={payoption === 'creditcard'} id="customRadio1" class="custom-control-input"></input>
                   <label class="custom-control-label" for="customRadio1">Credit Card
                   <p className={classes.paypara}>Please use a digital payment method and help us ensure contactless delivery for your safety</p></label>
                   <div class="form-row">
@@ -178,7 +127,7 @@ const Payment = (props) => {
                       <Input type="text" maxLength="5" class="form-control" inputChangeHandler={(e) => { inputChangeHandler(e, 'inputdate') }} id="inputdate" placeholder="MM/YY" touched={formData.inputdate.touched} isValid={formData.inputdate.isValid}></Input>
                     </div>
                     <div class="form-group col-md-3">
-                      <Input type="text" maxLength="3"class="form-control" inputChangeHandler={(e) => { inputChangeHandler(e, 'inputcvv') }} id="inputcvv" placeholder="CVV" touched={formData.inputcvv.touched} isValid={formData.inputcvv.isValid}></Input>
+                      <Input type="text" maxLength="3" class="form-control" inputChangeHandler={(e) => { inputChangeHandler(e, 'inputcvv') }} id="inputcvv" placeholder="CVV" touched={formData.inputcvv.touched} isValid={formData.inputcvv.isValid}></Input>
                     </div>
                     <div class="form-group col-md-12">
                       <Input type="text" class="form-control" inputChangeHandler={(e) => { inputChangeHandler(e, 'inputcardname') }} id="inputcardname" placeholder="Card Holder Name" touched={formData.inputcardname.touched} isValid={formData.inputcardname.isValid}></Input>
@@ -186,7 +135,7 @@ const Payment = (props) => {
                   </div>
                 </div>
                 <div class="custom-control custom-radio mb-4" style={{ backgroundColor: "#d3a578", color: "#fff", padding: '40px' }}>
-                  <input type="radio"  name="paypal" onChange={() => optionHandler("paypal")} disabled={checked.paypalIsDisabled} checked={checked.paypalIsChecked} onClick={(e) => { inputCheckedHandlerTwo(e) }} id="customRadio2" class="custom-control-input "></input>
+                  <input type="radio" name="paypal" onClick={() => optionHandler("paypal")} checked={payoption === 'paypal'} id="customRadio2" class="custom-control-input "></input>
                   <label class="custom-control-label col-md-8" for="customRadio2"><h6>PayPal</h6>
                     <span className={classes.paypara}>Please use a digital payment method and help us ensure contactless delivery for your safety</span>
                   </label>
@@ -197,14 +146,14 @@ const Payment = (props) => {
               </div>
 
               <div className={classes.bt}>
-                <button className={classes.cartbutton} type="button" onClick={paynowHandler} disabled={!isFormValid && !selection}>Pay Now</button>
+                <button className={classes.cartbutton} type="button" onClick={paynowHandler} disabled={!isFormValid}>Pay Now</button>
                 <button className={classes.cartbutton} type="button" onClick={cancelledHandler}>Back</button>
               </div>
             </div>
           </div>
           <div class="col-12  col-sm-12 col-md-6 col-lg-4 col-xl-4 item1">
             <div data-aos="fade-left">
-              <Summary></Summary>
+              <Summary applybuttonDisable={false}></Summary>
             </div>
           </div>
         </div>

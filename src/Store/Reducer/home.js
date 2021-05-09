@@ -2,9 +2,10 @@ import * as actionTypes from '../Actions/actionTypes';
 const initialState = {
   products: [],
   addTocart: [],
-  debouncedata:[],
-  loading:false,
-  shop:[]
+  debouncedata: [],
+  loading: false,
+  shop: [],
+  subtotal: 0
 };
 
 const addToCart = (state, action) => {
@@ -17,8 +18,8 @@ const addToCart = (state, action) => {
       break
     }
   }
- 
-  if (!flag) {
+
+  if (flag === false) {
     const newProduct = {
       ...action.product
     }
@@ -33,42 +34,53 @@ const addToCart = (state, action) => {
     }
   }
 }
-const deletecartproduct =(state,action)=>{
-  console.log(action)
-  let newarr=state.addTocart.filter(function(item){
-    return item.name!=action.name
-  })
-  return{
+const subtotalcalculator = (state) => {
+  let sub = 0;
+  for (let i = 0; i < state.addTocart.length; i++) {
+    sub = sub + state.addTocart[i].price * state.addTocart[i].quantity
+  }
+  return {
     ...state,
-    addTocart:newarr
+    subtotal: sub
+  }
+}
+const deletecartproduct = (state, action) => {
+  console.log(action)
+  let newarr = state.addTocart.filter(function (item) {
+    return item.name !== action.name
+  })
+
+  return {
+    ...state,
+    addTocart: newarr
   }
 }
 
 const quantityupdater = (state, action) => {
   for (let index = 0; index < state.addTocart.length; index++) {
     let ab = state.addTocart[index];
- 
+
     if (ab.name === action.name) {
       ab.quantity = action.quantity;
       break
     }
   }
-  let a=JSON.stringify(state)
-  let b=JSON.parse(a)
+  let a = JSON.stringify(state)
+  let b = JSON.parse(a)
   return b
 }
-const datafetch=(state,action) =>{
+const datafetch = (state, action) => {
   let output = [];
   for (let book in state.products) {
-      if (state.products[book].name.toLowerCase().includes(action.value)===true) {
-          output.push( state.products[book]);
-      }
+    if (state.products[book].name.toLowerCase().includes(action.value) === true) {
+      output.push(state.products[book]);
+    }
   }
-  return{
+  return {
     ...state,
-    debouncedata:output
+    debouncedata: output
   };
-  
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -76,34 +88,46 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const stat = addToCart(state, action);
-      // localStorage.setItem('mycart',JSON.stringify(stat.addTocart))
-      return stat;
+      return subtotalcalculator(stat)
     case actionTypes.DELETEPRODUCT:
-      return deletecartproduct(state,action)
+      return subtotalcalculator(deletecartproduct(state, action))
     case actionTypes.QUANTITY_UPDATER:
       const sta = quantityupdater(state, action);
-      // localStorage.setItem('mycart',JSON.stringify(sta.addTocart))
-      return sta;
-      case actionTypes.DEBOUNCE:
+      return subtotalcalculator(sta)
+    case actionTypes.DEBOUNCE:
       const st = datafetch(state, action);
       return st;
-      case actionTypes.FETCHSTART:
+    case actionTypes.FETCHSTART:
       return {
         ...state,
-        loading:true
+        loading: true
       }
-      case actionTypes.FETCHSUCCESS:
-        return{...state,
-          products:action.products,
-        loading:false}
-      case actionTypes.FETCHFAIL:{}
-        case actionTypes.SHOPPRODUCTSUCCESS:
-        return{
-          ...state,
-          shop:action.shop,
-        loading:false
+    case actionTypes.FETCHSUCCESS:
+      return {
+        ...state,
+        products: action.products,
+        loading: false
       }
-     
+    case actionTypes.FETCHFAIL: {
+      break
+    }
+    case actionTypes.SHOPPRODUCTSUCCESS:
+      return {
+        ...state,
+        shop: action.shop,
+        loading: false
+      }
+    case actionTypes.APPLYCOUPON:
+      return {
+        ...state,
+        subtotal: 0.9 * state.subtotal
+      }
+    case actionTypes.EMPTYCART:
+      return {
+        ...state,
+        addTocart: []
+      }
+
     default:
       return state;
   }

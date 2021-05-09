@@ -151,9 +151,7 @@ const Shipping = (props) => {
       pathname: "/yourcart/"
     })
   }
-  // let cart=props.cartproduct.map(function(product){
-  //   return <Cartproduct name={product.name} price={product.price} img={product.img}></Cartproduct>
-  // })
+ 
   return (
     <React.Fragment>
       <div className={classes.cartcontainer}>
@@ -218,7 +216,7 @@ const Shipping = (props) => {
 
           <div class="col-12  col-sm-12 col-md-6 col-lg-4 col-xl-4 item1">
             <div data-aos="fade-left">
-              <Summary>
+              <Summary applybuttonDisable={true}>
               </Summary>
             </div>
           </div>
